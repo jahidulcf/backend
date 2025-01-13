@@ -11,5 +11,8 @@ fun Application.configureRouting() {
         get("/") {
             call.respondText("Hello World!")
         }
+        get("/products") {
+            call.respond(mapOf("hello" to "world"))
+        }
     }
 }
