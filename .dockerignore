@@ -1,0 +1,10 @@
+.gradle
+build
+out
+.idea
+*.iml
+node_modules
+package.json
+yarn.lock
+*.js
+*.json

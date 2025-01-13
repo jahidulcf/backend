@@ -29,23 +29,3 @@ dependencies {
     testImplementation(libs.kotlin.test.junit)
 }
 
-tasks.register<Jar>("fatJar") {
-    group = "build"
-    description = "Assembles a fat JAR with all dependencies."
-
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    manifest {
-        attributes["Main-Class"] = application.mainClass.get()
-    }
-
-    from(sourceSets.main.get().output)
-
-    dependsOn(configurations.runtimeClasspath)
-    from({
-        configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) }
-    })
-
-    archiveBaseName.set("backend")
-    archiveClassifier.set("all")
-    archiveVersion.set("")
-}
